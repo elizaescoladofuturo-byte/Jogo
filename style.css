@@ -1,0 +1,612 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --green: #729879;
+  --dark-green: #385b40;
+  --light-green: #e5efdc;
+  --cream: #fffaf0;
+  --brown: #8b6749;
+  --text: #344337;
+}
+
+body {
+  margin: 0;
+  padding: 24px 14px;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  background: #e8efdf;
+  color: var(--text);
+  transition: background 0.5s, color 0.5s;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 0;
+  border-radius: 12px;
+  transition: transform 0.15s, filter 0.15s;
+}
+
+button:hover {
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+}
+
+.container {
+  max-width: 1150px;
+  margin: auto;
+  padding: 22px;
+  background: var(--cream);
+  border: 3px solid #c4d5b8;
+  border-radius: 22px;
+  box-shadow: 0 8px 24px #304b3015;
+}
+
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+h1, h2, h3, p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 6px;
+  color: var(--dark-green);
+}
+
+h2 {
+  color: var(--dark-green);
+  font-size: 1.3rem;
+}
+
+h3 {
+  margin-bottom: 12px;
+  color: var(--dark-green);
+}
+
+.topo p, .section-heading p, .house-heading p {
+  margin-bottom: 0;
+  color: #758374;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stats span {
+  padding: 10px 13px;
+  border-radius: 12px;
+  background: var(--light-green);
+  font-size: 0.92rem;
+}
+
+.time-panel, .daily-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  background: #f0f4e8;
+  border: 1px solid #d6e2cd;
+}
+
+.time-panel h2, .daily-panel h3 {
+  margin-bottom: 5px;
+}
+
+.time-panel p, .daily-panel p {
+  margin-bottom: 0;
+}
+
+.clock {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 150px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
+  background: #dce3d5;
+  border-radius: 20px;
+}
+
+.clock .progress-track {
+  width: 130px;
+}
+
+#dayProgress, #missionProgress {
+  width: 100%;
+  height: 100%;
+  background: #82b77e;
+  border-radius: inherit;
+  transition: width 0.2s;
+}
+
+#claimDaily {
+  padding: 11px 16px;
+  background: #f3cf76;
+  color: #654b1d;
+  font-weight: bold;
+}
+
+#claimDaily:disabled {
+  background: #d7ddcf;
+  color: #657060;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.tab {
+  padding: 12px 18px;
+  background: #e8eddf;
+  color: var(--dark-green);
+  font-weight: bold;
+}
+
+.tab.active {
+  background: var(--green);
+  color: white;
+}
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+.farm-layout {
+  display: grid;
+  grid-template-columns: 245px minmax(0, 1fr);
+  gap: 20px;
+}
+
+.panel {
+  padding: 18px;
+  background: #f7f8ef;
+  border: 1px solid #dfe6d6;
+  border-radius: 16px;
+}
+
+.panel p {
+  margin-bottom: 10px;
+}
+
+.panel hr {
+  border: 0;
+  border-top: 1px solid #dfe6d6;
+  margin: 18px 0;
+}
+
+.seed-option {
+  display: block;
+  margin: 12px 0;
+  cursor: pointer;
+}
+
+.seed-option input {
+  accent-color: var(--green);
+}
+
+.action-list {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.action {
+  padding: 11px;
+  background: #e8eddf;
+  color: var(--dark-green);
+  text-align: left;
+}
+
+.action.selected {
+  background: var(--green);
+  color: white;
+}
+
+.primary {
+  padding: 12px 14px;
+  background: var(--dark-green);
+  color: white;
+  font-weight: bold;
+}
+
+.secondary {
+  padding: 11px 14px;
+  background: #e5eddd;
+  color: var(--dark-green);
+}
+
+.full {
+  width: 100%;
+}
+
+.small {
+  margin-top: 10px;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: #788273;
+}
+
+.farm-main {
+  min-width: 0;
+}
+
+.section-heading, .house-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.weather {
+  font-size: 2rem;
+}
+
+.plot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  padding: 14px;
+  background: #c8dcb6;
+  border: 3px solid #9db78b;
+  border-radius: 18px;
+}
+
+.plot {
+  display: flex;
+  min-height: 92px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 3px;
+  border: 2px solid #ad8057;
+  background: #bd8b5c;
+  color: #fff9e9;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.plot.empty {
+  background: #a8784d;
+}
+
+.plot.growing {
+  background: #9b774e;
+}
+
+.plot.ready {
+  background: #759b65;
+  border-color: #d6e7ad;
+}
+
+.plot.watered {
+  box-shadow: inset 0 0 0 3px #81cce1;
+}
+
+.plot .crop-icon {
+  font-size: 1.8rem;
+}
+
+.plot .plot-label {
+  font-size: 0.75rem;
+}
+
+.upgrades, .mission {
+  margin-top: 18px;
+}
+
+.upgrade-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.upgrade-list button {
+  padding: 12px;
+  background: #e6efdc;
+  color: var(--dark-green);
+  text-align: left;
+  line-height: 1.5;
+}
+
+.upgrade-list small {
+  display: block;
+  margin-top: 4px;
+  color: #71816d;
+}
+
+.mission .progress-track {
+  margin-top: 12px;
+}
+
+.house-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 255px;
+  gap: 20px;
+  align-items: start;
+}
+
+.house-room {
+  position: relative;
+  height: 430px;
+  overflow: hidden;
+  border: 8px solid #a87d57;
+  border-radius: 16px;
+  background: #e9d3ad;
+  isolation: isolate;
+}
+
+.room-wall {
+  position: absolute;
+  z-index: -2;
+  inset: 0 0 34% 0;
+  background-color: #f2e2c8;
+  background-image: linear-gradient(#e2ceb0 1px, transparent 1px);
+  background-size: 100% 34px;
+}
+
+.room-floor {
+  position: absolute;
+  z-index: -1;
+  inset: 66% 0 0;
+  background: repeating-linear-gradient(
+    0deg,
+    #bd9168 0 30px,
+    #a87c55 31px 33px
+  );
+}
+
+.room-window {
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  display: grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  border: 7px solid #fff5df;
+  border-radius: 8px;
+  background: #a9d9df;
+  font-size: 2rem;
+}
+
+.room-door {
+  position: absolute;
+  right: 22px;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 100px;
+  border: 4px solid #815739;
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  background: #bb8b60;
+  font-size: 1.5rem;
+}
+
+#furnitureArea {
+  position: absolute;
+  inset: 0;
+}
+
+.furniture-piece {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 76px;
+  height: 76px;
+  border: 2px solid #ffffffaa;
+  border-radius: 12px;
+  background: #ffffff55;
+  font-size: 2.5rem;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.furniture-piece:active {
+  cursor: grabbing;
+}
+
+.furniture-piece.selected {
+  outline: 3px dashed #fff5a6;
+}
+
+.furniture-piece[data-type="rug"] {
+  width: 125px;
+  height: 60px;
+  border-radius: 50%;
+  background: #c98d8d;
+  z-index: 1;
+}
+
+.furniture-piece[data-type="bed"] {
+  width: 110px;
+  height: 95px;
+}
+
+.furniture-piece[data-type="sofa"] {
+  width: 115px;
+  height: 75px;
+}
+
+.furniture-buy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+  margin: 8px 0;
+  padding: 11px;
+  background: #e7efdf;
+  color: var(--dark-green);
+  text-align: left;
+}
+
+.furniture-buy span {
+  font-size: 0.8rem;
+  color: #788273;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+#notice {
+  margin: 0;
+  color: var(--dark-green);
+  font-weight: bold;
+}
+
+.reset-button {
+  padding: 9px 12px;
+  background: #f1e1d6;
+  color: #8a4e3b;
+  font-size: 0.85rem;
+}
+
+body.night-mode {
+  background: #242c40;
+  color: #edf0fa;
+}
+
+body.night-mode .container {
+  background: #343d54;
+  border-color: #65708a;
+}
+
+body.night-mode h1,
+body.night-mode h2,
+body.night-mode h3,
+body.night-mode #notice {
+  color: #f1e7bd;
+}
+
+body.night-mode .panel,
+body.night-mode .time-panel,
+body.night-mode .daily-panel {
+  background: #414b64;
+  border-color: #65708a;
+}
+
+body.night-mode .stats span,
+body.night-mode .tab,
+body.night-mode .action,
+body.night-mode .upgrade-list button,
+body.night-mode .furniture-buy {
+  background: #4a5872;
+  color: #f1f1f7;
+}
+
+body.night-mode .tab.active,
+body.night-mode .action.selected {
+  background: #7c91a8;
+}
+
+body.night-mode .plot-grid {
+  background: #465c4c;
+  border-color: #657b65;
+}
+
+body.night-mode .time-panel p,
+body.night-mode .daily-panel p,
+body.night-mode .topo p,
+body.night-mode .small,
+body.night-mode .section-heading p,
+body.night-mode .house-heading p {
+  color: #d0d7e5;
+}
+
+body.night-mode .house-room {
+  border-color: #6f5b56;
+}
+
+@media (max-width: 800px) {
+  .farm-layout, .house-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .upgrade-list {
+    grid-template-columns: 1fr;
+  }
+
+  .plot-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .house-room {
+    height: 360px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px 6px;
+  }
+
+  .container {
+    padding: 13px;
+  }
+
+  .plot-grid {
+    gap: 6px;
+    padding: 8px;
+  }
+
+  .plot {
+    min-height: 80px;
+  }
+
+  .clock {
+    width: 100%;
+  }
+
+  .clock .progress-track {
+    flex: 1;
+  }
+
+  .house-room {
+    height: 320px;
+  }
+}

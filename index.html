@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Fazendinha</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="topo">
+      <div>
+        <h1>🌻 Minha Fazendinha</h1>
+        <p>Cuide da sua fazenda e construa seu lar!</p>
+      </div>
+      <div class="stats">
+        <span>🪙 <b id="coins">100</b></span>
+        <span>⭐ Nível <b id="level">1</b></span>
+        <span>🌾 Colheitas <b id="harvests">0</b></span>
+      </div>
+    </header>
+
+    <section class="time-panel">
+      <div>
+        <h2 id="dayStatus">☀️ Dia 1</h2>
+        <p id="dayMessage">Aproveite o dia para cuidar da plantação!</p>
+      </div>
+      <div class="clock">
+        <div class="progress-track">
+          <div id="dayProgress"></div>
+        </div>
+        <span id="dayTimer">60s</span>
+      </div>
+    </section>
+
+    <section class="daily-panel">
+      <div>
+        <h3>🎁 Recompensa diária</h3>
+        <p id="dailyMessage">Entre todos os dias para ganhar moedas!</p>
+      </div>
+      <button id="claimDaily">Receber recompensa</button>
+    </section>
+
+    <nav class="tabs">
+      <button class="tab active" data-screen="farmScreen">🌱 Fazenda</button>
+      <button class="tab" data-screen="houseScreen">🏡 Minha casa</button>
+    </nav>
+
+    <section id="farmScreen" class="screen active">
+      <div class="farm-layout">
+        <aside class="panel">
+          <h2>🎒 Inventário</h2>
+          <p>🥕 Cenouras: <b id="carrots">0</b></p>
+          <p>🍅 Tomates: <b id="tomatoes">0</b></p>
+          <p>🌾 Trigo: <b id="wheat">0</b></p>
+
+          <hr>
+
+          <h3>🌱 Escolha a semente</h3>
+          <label class="seed-option">
+            <input type="radio" name="seed" value="carrot" checked>
+            🥕 Cenoura
+          </label>
+          <label class="seed-option">
+            <input type="radio" name="seed" value="tomato">
+            🍅 Tomate
+          </label>
+          <label class="seed-option">
+            <input type="radio" name="seed" value="wheat">
+            🌾 Trigo
+          </label>
+
+          <h3>🧤 Ações</h3>
+          <div class="action-list">
+            <button class="action selected" data-mode="plant">🌱 Plantar</button>
+            <button class="action" data-mode="water">💧 Regar</button>
+            <button class="action" data-mode="harvest">🧺 Colher</button>
+          </div>
+
+          <button id="sellAll" class="primary full">Vender colheitas</button>
+          <p id="sellMessage" class="small"></p>
+        </aside>
+
+        <div class="farm-main">
+          <div class="section-heading">
+            <div>
+              <h2>🌿 Sua plantação</h2>
+              <p id="farmMessage">Escolha uma ação e clique em um terreno.</p>
+            </div>
+            <span class="weather">🌤️</span>
+          </div>
+
+          <div id="plotGrid" class="plot-grid"></div>
+
+          <section class="panel upgrades">
+            <h3>🛒 Melhorias da fazenda</h3>
+            <div class="upgrade-list">
+              <button data-upgrade="watering">
+                💧 Regador melhorado
+                <small>Preço: 60 moedas</small>
+              </button>
+              <button data-upgrade="plots">
+                🌱 Novos terrenos
+                <small>Preço: 80 moedas</small>
+              </button>
+              <button data-upgrade="chicken">
+                🐔 Comprar galinha
+                <small>Preço: 100 moedas</small>
+              </button>
+            </div>
+            <p id="upgradeMessage" class="small"></p>
+          </section>
+
+          <section class="panel mission">
+            <h3>📜 Missão do dia</h3>
+            <p id="missionText">Colha 5 plantações.</p>
+            <div class="progress-track">
+              <div id="missionProgress"></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="houseScreen" class="screen">
+      <div class="house-heading">
+        <div>
+          <h2>🏡 Minha casinha</h2>
+          <p>Compre móveis e deixe seu cantinho aconchegante!</p>
+        </div>
+        <button id="exitHouse" class="secondary">Voltar para a fazenda</button>
+      </div>
+
+      <div class="house-layout">
+        <div class="house-room">
+          <div class="room-wall"></div>
+          <div class="room-floor"></div>
+          <div class="room-window">🌳</div>
+          <div class="room-door">🚪</div>
+          <div id="furnitureArea"></div>
+        </div>
+
+        <aside class="panel furniture-shop">
+          <h3>🛋️ Loja de móveis</h3>
+          <p class="small">Compre com as moedas da sua fazenda.</p>
+
+          <button class="furniture-buy" data-furniture="bed">
+            🛏️ Cama <span>50 moedas</span>
+          </button>
+          <button class="furniture-buy" data-furniture="sofa">
+            🛋️ Sofá <span>40 moedas</span>
+          </button>
+          <button class="furniture-buy" data-furniture="table">
+            🪑 Mesa <span>30 moedas</span>
+          </button>
+          <button class="furniture-buy" data-furniture="plant">
+            🪴 Vaso de planta <span>20 moedas</span>
+          </button>
+          <button class="furniture-buy" data-furniture="bear">
+            🧸 Ursinho <span>25 moedas</span>
+          </button>
+          <button class="furniture-buy" data-furniture="rug">
+            🟫 Tapete <span>35 moedas</span>
+          </button>
+
+          <p id="houseMessage" class="small">
+            Clique em um móvel para comprá-lo. Arraste os móveis para mudar de lugar.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <p id="notice" role="status">Bem-vinda à sua fazendinha! 🌷</p>
+      <button id="reset" class="reset-button">Recomeçar jogo</button>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
